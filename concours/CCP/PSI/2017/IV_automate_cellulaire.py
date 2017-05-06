@@ -1,3 +1,11 @@
+""" 
+Auteur: JJ Fleck, PCSI1, Kléber
+    
+Proposition d'implémentation des diverses fonctions demandées dans la partie 
+IV du sujet PSI CCP 2017 sur la modélisation par automate cellulaire
+de la circulation automobile sur une autoroute.
+"""
+
 
 from numpy import *               # Imports présupposés par le sujet
 from matplotlib.pyplot import *   # (mais mauvaise bonne idée en pratique)

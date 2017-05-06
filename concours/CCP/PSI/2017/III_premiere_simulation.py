@@ -1,3 +1,13 @@
+
+"""
+Auteur: JJ Fleck, PCSI1, Kléber
+
+Proposition d'implémentation des diverses fonctions demandées dans la partie 
+III du sujet PSI CCP 2017 sur la modélisation continue (mais discrétisée pour 
+l'intégration) de la circulation automobile sur une autoroute.
+"""
+
+
 from numpy import *              # Imports présupposés par le sujet
 from matplotlib.pyplot import *  # (mais mauvaise bonne idée en pratique)
 
