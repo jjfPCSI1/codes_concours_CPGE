@@ -3,8 +3,8 @@ from numpy import *               # Imports présupposés par le sujet
 from matplotlib.pyplot import *   # (mais mauvaise bonne idée en pratique)
 from random import random as rand # Pour la fonction rand() de l'énoncé
 
-dx = 7.5                 # Pas en espace
-dt = 1.2                 # Pas en temps
+dx = 7.5                 # Pas en espace (en m)
+dt = 1.2                 # Pas en temps  (en s)
 vm = 130                 # Vitesse maximale (en km/h)
 La = 8500                # Longueur de l'autoroute (en m)
 N  = int(La // dx + 1)   # Nombre de cellules dans la simulation
