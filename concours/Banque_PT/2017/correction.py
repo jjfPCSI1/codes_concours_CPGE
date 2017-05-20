@@ -149,11 +149,9 @@ def duree_injection(Usonde,Kpp,Kpn,Ki,tinjc0,integ_i,dt):
     """
     entrée : Usonde(t_i), integ_i
     sortie : Usonde(t_(i+1)), integ_(i+1)
-    ## MODIFICATION PAR RAPPORT A L'ENONCE:
-    ## on pose Ki (énoncé modifié) <- Ki*tinjec0 (énoncé original)
     """
     
-    integ_suivant = integ_i + dt    
+    integ_suivant = integ_i + tinjc0*dt    
     if Usonde <= 0.5:
         return tinjc0*Kpp + Ki*integ_suivant, integ_suivant
     else:
@@ -173,18 +171,18 @@ def richesse(tau1,tau2,K,dt,r_i,w_i,tinjec_i):
     r_suivant = Euler(tau2,1,dt,r_i,w_i)
     return r_suivant,w_suivant
     
-Tcycle = 60 / (2*4000)
-tau1 = 10*Tcycle
-tau2 = 20*Tcycle
+Tcycle = 60 / (2*4000) #s
+tau1 = 10*Tcycle #s
+tau2 = 20*Tcycle #s
 Kpp = 1.03
 Kpn = 0.95
-Ki  = 0.8*12.3e-3 ## VALEUR MODIFIEE PAR RAPPORT AU SUJET ORIGINAL
-tinjc0 = 12.3e-3
-t_0 = 0
-t_n = 200*Tcycle
-dt  = 2e-6
-w_0 = 0.9
-K = 1/tinjc0
+Ki  = 0.8 #s**(-1)
+tinjc0 = 12.3e-3 #s
+t_0 = 0 #s
+t_n = 100*Tcycle #s
+dt  = 2e-6 #s
+w_0 = 0.9 
+K = 1/tinjc0 #s**(-1)
 integ = 0
 
 liste_richesse = [0.9]
@@ -199,11 +197,15 @@ t_injec = liste_tinjec[0]
 U = liste_U[0]
 w = w_0
 
-for t in liste_temps[1:]:
-    U_nouveau = sonde(r)
-    if U_nouveau != U: #franchissement de seuil
-        integ = 0
-    U = U_nouveau
+cycle_mesure_U = int(Tcycle / dt)
+print(cycle_mesure_U) #3750
+
+for numero_t in range(1,len(liste_temps)):
+    if numero_t % cycle_mesure_U == 0:
+        U_nouveau = sonde(r)
+        if U_nouveau != U: #franchissement de seuil
+            integ = 0
+        U = U_nouveau
     t_injec, integ = duree_injection(U,Kpp,Kpn,Ki,tinjc0,integ,dt)
     r, w = richesse(tau1,tau2,K,dt,r,w,t_injec)
     
