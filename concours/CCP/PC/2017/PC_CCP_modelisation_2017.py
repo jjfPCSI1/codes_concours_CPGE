@@ -194,7 +194,7 @@ if cylindre_infini:
         im = plt.imshow(V_cyl, interpolation='bilinear', origin='lower',
                     cmap=cm.jet, extent=(0, L, 0, L) )
         CS = plt.contour(X,Y,V_cyl)
-        plt.clabel(CS,inline=1)
+        plt.clabel(CS,inline=1,fmt='%d')
         plt.title('Courbes isopotentielles (en volts)')
         plt.xlabel('$x$ en m')
         plt.ylabel('$y$ en m')
