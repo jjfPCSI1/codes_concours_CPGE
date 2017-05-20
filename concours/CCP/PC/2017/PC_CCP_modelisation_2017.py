@@ -1,11 +1,12 @@
+# coding: latin1
+
 """
 Auteur: JJ Fleck, PCSI1, Kléber
 
-Proposition d'implémentation pour l'épreuve de modélisation de 
-Physique-Chimie, filière PC, concours CCP concernant la résolution de 
-l'équation de poisson dans un plan (x,y) pour une distribution volumique de 
+Proposition d'implémentation pour l'épreuve de modélisation de
+Physique-Chimie, filière PC, concours CCP concernant la résolution de
+l'équation de poisson dans un plan (x,y) pour une distribution volumique de
 charges donnée.
-
 """
 
 import numpy as np
@@ -23,7 +24,7 @@ def nouveau_potentiel(V,rhos,frontiere,i,j):
     if frontiere[i,j]: 
         return V[i,j]
     else:
-        return 0.25 * (V[i+1,j] + V[i-1,j] + V[i,j+1] + V[i,j-1]) + rhos[i,j]
+        return 0.25 * (V[i+1,j] + V[i-1,j] + V[i,j+1] + V[i,j-1] + rhos[i,j])
 
 # Q8
 def itere_J(V,rhos,frontiere):
@@ -120,8 +121,8 @@ if cylindre_infini:
     print('Cylindre infini')
     # Initialisations
     eps0 = 8.85e-12   # epsilon_0
-    L = 20.0e-2       # Largeur L de la zone de visualisation
-    R = L/4           # Rayon du cylindre
+    R = 0.05           # Rayon du cylindre
+    L = R*4       # Largeur L de la zone de visualisation
     xC,yC = L/2,L/2   # Centre du cylindre
     N = 100           # Nombre de points
     rho = 1e-5        # densité volumique de charge rho
@@ -141,7 +142,7 @@ if cylindre_infini:
         
     # Q20: 
     def initialise_rhos_cylindre(tab_rhos):
-        # h, XC, YC, R et rhos sont des variables globales initialisées plus haut
+        # h, xC, yC, R et rhos sont des variables globales initialisées plus haut
         N = len(tab_rhos)-1
         for i in range(N+1):
             for j in range(N+1):
@@ -159,7 +160,7 @@ if cylindre_infini:
     
     # Faisons la résolution proprement dite
     print('Début des calculs')
-    seuil = 1e-5
+    seuil = 1e-1
     initialise_rhos_cylindre(rhos_cyl)
     initialise_frontiere_cylindre(frontiere_cyl)
     poisson(itere_SOR,V_cyl,rhos_cyl,frontiere_cyl,seuil)
@@ -222,9 +223,9 @@ if cylindre_infini:
     def graphe_Ex(fichier,Ex_cyl):
         plt.figure(figsize=(cote,cote))
         plt.plot(x,Ex_cyl[:,N//2+1])
-        plt.title('Evolution du potentiel $V(x,y=L/2)$ en volts')
+        plt.title('Evolution du champ $E_x(x,y=L/2)$ en volts/metre')
         plt.xlabel('$x$ en m')
-        plt.ylabel('$V$ en volts')
+        plt.ylabel('$E_x$ en volts par metre')
         plt.xlim((min(x),max(x)))
         plt.ylim((1.05*np.min(Ex_cyl),1.05*np.max(Ex_cyl)))
         plt.savefig(fichier)
