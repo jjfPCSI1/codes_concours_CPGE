@@ -16,7 +16,7 @@ si vous en détectez.
 
 ## Codes déjà disponibles
 
-* [concours/Centrale/MP_PC_PSI_TSI/2015] (concours/Centrale/MP_PC_PSI_TSI/2015)
+* [concours/Centrale/MP_PC_PSI_TSI/2015](concours/Centrale/MP_PC_PSI_TSI/2015/)
 
 ## Notes pour les contributeurs
 
