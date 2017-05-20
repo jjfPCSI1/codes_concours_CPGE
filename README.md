@@ -14,11 +14,17 @@ intuition ou d'expliquer dans le détail à nos élèves, soyez donc compréhens
 et n'hésitez pas à proposer des améliorations/contributions/rapports de bugs 
 si vous en détectez.
 
+## Codes déjà disponibles
+
+* [concours/Centrale/MP_PC_PSI_TSI/2015] (concours/Centrale/MP_PC_PSI_TSI/2015)
+
 ## Notes pour les contributeurs
 
 L'idée est d'organiser le répertoire concours en sous-répertoires pour chaque concours:
+* Banque_PT/
 * CCP/
 * Centrale/
+* E3A/
 * Mines/
 * XENS/
 
