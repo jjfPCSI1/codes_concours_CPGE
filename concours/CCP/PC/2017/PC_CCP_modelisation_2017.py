@@ -200,9 +200,10 @@ if cylindre_infini:
         plt.ylabel('$y$ en m')
         plt.savefig(fichier)
     graphe_isopot('cyl_isoV.png',V_cyl)
-    # On remarque que les courbes sont circulaires (comme on s'y attend) au 
-    # centre, mais tende vers un carré vers les bords (imposé par les 
-    # conditions au bord nulles sur la frontière)
+    # On remarque que les courbes sont circulaires au centre (comme on s'y 
+    # attendrait s'il n'y avait que le cylindre uniformément chargé), mais 
+    # tendent vers un carré vers les bords (imposé par les conditions au bord 
+    # nulles sur la frontière)
     
     # Puis la coupe pour voir l'évolution du potentiel en passant par le centre
     def graphe_pot(fichier,V_cyl):
